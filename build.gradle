@@ -36,13 +36,28 @@ dependencies {
     // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
     // end::jetty[]
     // tag::actuator[]
-    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-actuator") {
+   		exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+    compile("org.springframework.boot:spring-boot-starter-test")
+    
     // end::actuator[]
+    compile("org.springframework.boot:spring-boot-starter") {
+    	exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    compile("org.springframework.boot:spring-boot-starter-log4j2")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml")
     compile ("commons-codec:commons-codec")
+	compile("mysql:mysql-connector-java")
+	compile("org.springframework:spring-jdbc")
+	compile("org.apache.commons:commons-dbcp2")
+	compile group: 'javax.inject', name: 'javax.inject', version: '1'
     compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
 
     testCompile("junit:junit")
