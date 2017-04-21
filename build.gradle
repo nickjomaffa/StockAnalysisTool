@@ -47,3 +47,6 @@ dependencies {
 
     testCompile("junit:junit")
 }
+springBoot {
+  mainClass = "com.stock.analysis.main.App"
+}
